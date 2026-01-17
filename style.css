@@ -49,12 +49,52 @@ header {
 
 .navigation strong {
   width: 100px;
-  height: 100%;
+  height: 60px;
   display: flex;
   cursor: pointer;
-  text-align: center;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+}
+
+.navigation strong::before {
+  content: attr(data-hover);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  color: var(--text-black);
+}
+.navigation strong::after {
+  content: attr(data-hover);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0%);
+  transition: transform 0.3s ease;
+  color: var(--text-black);
+}
+
+.navigation strong:hover::before {
+  transform: translateY(0%);
+  transition: transform 0.3s ease;
+}
+.navigation strong:hover::after {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
 }
 
 strong {
