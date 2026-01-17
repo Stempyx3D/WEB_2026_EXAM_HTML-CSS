@@ -1,0 +1,7 @@
+:root {
+  --text-black: #000000;
+  --bg-color: rgb(255 251 240);
+  --bg-color_darker: rgb(234, 226, 183);
+  --button-color: rgb(0, 0, 0);
+  --button-text-color:rgb(255, 255, 255);
+}
