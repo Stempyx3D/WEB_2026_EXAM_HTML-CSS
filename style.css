@@ -14,6 +14,10 @@ body {
   background-color: var(--bg-color);
 }
 
+a {
+  text-decoration: none;
+}
+
 header {
   padding: 10px 40px;
   background: linear-gradient(to bottom, rgba(255, 251, 240, 1), rgba(255, 251, 240, 0.0));
