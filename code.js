@@ -1,22 +1,19 @@
-// Image wheel functionality
 let currentImageIndex = 0;
 const wheelTrack = document.querySelector('.wheel-track');
 const wheelBtnLeft = document.querySelector('.wheel-btn-left');
 const wheelBtnRight = document.querySelector('.wheel-btn-right');
 const totalImages = document.querySelectorAll('.wheel-image').length;
-const originalImageCount = 5; // Original number of unique images
+const originalImageCount = 5;
 const mediaQuery = window.matchMedia('(max-width: 1000px)');
 
 function updateWheel(instant = false) {
     const imageWidth = document.querySelector('.wheel-image').offsetWidth;
     const container = document.querySelector('.wheel-container');
     const containerWidth = container.offsetWidth;
-    const gap = 0; // Gap between images
+    const gap = 0;
     let offset;
     
     if (mediaQuery.matches) {
-        // On mobile: center the carousel by offsetting so the current image is centered
-        // Calculate offset to center the image: containerWidth/2 - imageWidth/2 - (currentImageIndex * imageWidth)
         offset = (containerWidth / 2) - (imageWidth / 2) - (currentImageIndex * imageWidth) - (imageWidth * 2);
     } else {
         offset = -(currentImageIndex * (imageWidth + gap)) - (containerWidth / 18);
@@ -31,19 +28,17 @@ function updateWheel(instant = false) {
     } else {
         wheelTrack.style.transform = `translateX(${offset}px)`;
     }
-    
-    // Update scale for side images
+
     updateImageScales();
 }
 
 function updateImageScales() {
     const images = document.querySelectorAll('.wheel-image');
-    const centerIndex = 2; // Middle position when showing 5 images
-    const semiCenterIndex = [1, 3]; // Positions next to center
-    const edgeIndex = [0, 4]; // Edge positions
+    const centerIndex = 2; // Middle
+    const semiCenterIndex = [1, 3]; //next to center
+    const edgeIndex = [0, 4]; // Edge
     
     images.forEach((img, index) => {
-        // Calculate position relative to current index (5 images visible)
         let position = (index - currentImageIndex) % originalImageCount;
 
         if (!mediaQuery.matches) {
@@ -59,7 +54,6 @@ function updateImageScales() {
                 img.style.transform = `scale(0.7) translateX(${moveAmount}%)`;
             }
         } else {
-            // Reset transforms on mobile
             img.style.transform = '';
         }
     });
@@ -68,8 +62,7 @@ function updateImageScales() {
 wheelBtnRight.addEventListener('click', () => {
     currentImageIndex++;
     updateWheel();
-    
-    // Reset to beginning when reaching the end of first set
+
     if (currentImageIndex >= originalImageCount) {
         setTimeout(() => {
             currentImageIndex = 0;
@@ -92,20 +85,16 @@ wheelBtnLeft.addEventListener('click', () => {
     }
 });
 
-// Initialize on load
 window.addEventListener('load', () => {
-    // Apply media query initial state
     if (mediaQuery.matches) {
         wheelTrack.style.transform = 'translateX(50%)';
     }
     updateWheel();
 });
 window.addEventListener('resize', () => {
-    // Recalculate immediately without animation to avoid jarring transition
     updateWheel(true);
 });
 
-// Hide/show header on scroll (down hides, up shows)
 function headerScrollHandler() {
     const headerEl = document.querySelector('header');
     if (!headerEl) return;
