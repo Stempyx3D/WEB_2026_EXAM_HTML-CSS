@@ -6,7 +6,7 @@ const totalImages = document.querySelectorAll('.wheel-image').length;
 const originalImageCount = 5;
 const mediaQuery = window.matchMedia('(max-width: 1000px)');
 
-function updateWheel(instant = false) {
+function updateWheel() {
     const imageWidth = document.querySelector('.wheel-image').offsetWidth;
     const container = document.querySelector('.wheel-container');
     const containerWidth = container.offsetWidth;
