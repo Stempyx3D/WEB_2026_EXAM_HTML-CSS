@@ -19,15 +19,7 @@ function updateWheel(instant = false) {
         offset = -(currentImageIndex * (imageWidth + gap)) - (containerWidth / 18);
     }
     
-    if (instant) {
-        wheelTrack.style.transition = 'none';
-        wheelTrack.style.transform = `translateX(${offset}px)`;
-        setTimeout(() => {
-            wheelTrack.style.transition = 'transform 0.3s ease';
-        }, 50);
-    } else {
-        wheelTrack.style.transform = `translateX(${offset}px)`;
-    }
+    wheelTrack.style.transform = `translateX(${offset}px)`;
 
     updateImageScales();
 }
